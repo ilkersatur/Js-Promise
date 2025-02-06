@@ -22,9 +22,14 @@ return new Promise((resolve, reject) => {
 });
 ```
 
-# `await Promise.all([...])` Kullanımı
+`await Promise.all([...])` Kullanımı
 
 `await Promise.all([...])` kullanılarak iki API çağrısı aynı anda başlatılıyor ve ikisi de tamamlanana kadar bekleniyor. Eğer `Promise` yerine callback fonksiyonlar kullanılsaydı, bu işlemleri yönetmek daha karmaşık hale gelirdi.
+
+- `return new Promise((resolve, reject) => {...})` → Yeni bir Promise oluşturuluyor.  
+- `this.$Page.ExecuteQuery()` → Asenkron bir işlem (API çağrısı) yapılıyor.  
+- **Done** fonksiyonunda API çağrısı başarılı olursa `resolve()` çağrılarak Promise tamamlanıyor.  
+- **Fail** durumunda bile `resolve()` çağrılıyor ki hata alsa bile işlem tamamlanmış olarak sayılabilsin (böylece kod akışı durmaz).  
 
 ## Özet
 
